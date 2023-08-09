@@ -76,7 +76,9 @@ class _HomeScreenState extends State<HomeScreen> {
                onTap: () {
                 Navigator.pop(context);
                },
-                 child: Text('${controller.signupController.selectedCity}',style: const TextStyle(fontWeight: FontWeight.w400,fontSize:16),)),
+                 child: Container(
+                   width: 50,
+                     child: Text('${controller.signupController.selectedCity}',style: const TextStyle(fontWeight: FontWeight.w400,fontSize:16),))),
             // leading: InkWell(
             //     onTap: () {
             //       //controller.getDrawer();
