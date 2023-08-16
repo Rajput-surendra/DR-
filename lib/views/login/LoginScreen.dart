@@ -43,7 +43,7 @@ class _LoginScreenState extends State<LoginScreen> {
         String? otp = jsonresponse["otp"];
         String mobile = jsonresponse["mobile"];
         print('__________${otp}___sasdfsdfs______');
-        Fluttertoast.showToast(msg: '${jsonresponse['message']}');
+        Fluttertoast.showToast(msg: '${jsonresponse['message']}',backgroundColor:  AppColors.secondary);
         Navigator.pushReplacement(
             context,
             MaterialPageRoute(
@@ -53,7 +53,7 @@ class _LoginScreenState extends State<LoginScreen> {
 
       }
       else{
-        Fluttertoast.showToast(msg: "${jsonresponse['message']}");
+        Fluttertoast.showToast(msg: "${jsonresponse['message']}",backgroundColor:  AppColors.secondary);
         setState(() {
           isloader = false;
         });
@@ -134,7 +134,7 @@ class _LoginScreenState extends State<LoginScreen> {
                                if(_formKey.currentState!.validate()){
                                  loginwitMobile();
                                }else{
-                                 Fluttertoast.showToast(msg: "mobile field is requerd");
+                                 Fluttertoast.showToast(msg: "mobile field is requerd",backgroundColor: AppColors.secondary);
                                }
                              },
                              child: Container(

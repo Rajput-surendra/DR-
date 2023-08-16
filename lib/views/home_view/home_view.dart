@@ -3,10 +3,13 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:dr_plus/Utils/colors.dart';
 import 'package:dr_plus/controllers/home_controller.dart';
+import 'package:dr_plus/views/signup_view/signup_view.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:http/http.dart'as http;
+
+import '../Notification/notification_Screen.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({Key? key}) : super(key: key);
@@ -15,10 +18,7 @@ class HomeScreen extends StatefulWidget {
   State<HomeScreen> createState() => _HomeScreenState();
 }
 
-
 class _HomeScreenState extends State<HomeScreen> {
-
-
 
   @override
   Widget build(BuildContext context) {
@@ -64,6 +64,7 @@ class _HomeScreenState extends State<HomeScreen> {
          // key: controller.scaffoldKey,
           backgroundColor: AppColors.lightwhit,
           appBar: AppBar(
+
             centerTitle: true,
               flexibleSpace: Container(
                 decoration:BoxDecoration(
@@ -74,20 +75,25 @@ class _HomeScreenState extends State<HomeScreen> {
               ),
              title: InkWell(
                onTap: () {
-                Navigator.pop(context);
+                Navigator.push(context, MaterialPageRoute(builder: (context)=>SignUpScreen()));
                },
-                 child: Container(
-                   width: 50,
-                     child: Text('${controller.signupController.selectedCity}',style: const TextStyle(fontWeight: FontWeight.w400,fontSize:16),))),
-            // leading: InkWell(
-            //     onTap: () {
-            //       //controller.getDrawer();
-            //       controller.scaffoldKey.currentState!.openDrawer();
-            //     },
-            //     child: const Icon(Icons.dehaze_rounded)),
+                 child: Row(
+                   mainAxisSize: MainAxisSize.min,
+                   children: [
 
+                     Icon(Icons.search),
+                     controller.signupController.selectedPlace == null ?
+                     Text('${controller.signupController.selectedCity}'
+                       ,style: const TextStyle(fontWeight: FontWeight.w400,fontSize:16),)
+                         :Text('${controller.signupController.selectedPlace}',style: const TextStyle(fontWeight: FontWeight.w400,fontSize:16),)
+                   ],
+                 )),
             actions: [
-              Image.asset("assets/images/dr_plus_logo.png",height: 50,width: 50,)
+              Image.asset("assets/images/dr_plus_logo.png",height: 50,width: 50,),
+              InkWell(onTap: (){
+                Navigator.push(context, MaterialPageRoute(builder: (context)=>NotificationScreen()));
+              },
+                  child: Icon(Icons.notifications_active,size: 30,))
             ],
 
           ),

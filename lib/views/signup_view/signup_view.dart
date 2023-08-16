@@ -388,7 +388,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                             onPress: () {
 
                               if( controller.selectedState == null ||controller.selectedCity==null){
-                                Fluttertoast.showToast(msg: 'Please select all fields');
+                                Fluttertoast.showToast(msg: 'Please select all fields',backgroundColor:  AppColors.secondary);
                               }
                               else{
                                 controller.onTapHome();

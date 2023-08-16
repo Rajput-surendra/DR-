@@ -127,10 +127,10 @@ class _VerifyOtpScreenState extends State<VerifyOtpScreen> {
                   const SizedBox(
                     height: 10,
                   ),
-                  Text(
-                    "OTP-${widget.otp}",
-                    style: TextStyle(color:  AppColors.black,fontWeight:FontWeight.bold,fontSize: 16),
-                  ),
+                  // Text(
+                  //   "OTP-${widget.otp}",
+                  //   style: TextStyle(color:  AppColors.black,fontWeight:FontWeight.bold,fontSize: 16),
+                  // ),
 
                   SizedBox(height: 20,),
                   Center(
@@ -186,7 +186,7 @@ class _VerifyOtpScreenState extends State<VerifyOtpScreen> {
                       }else{
                         Fluttertoast.showToast(
                             msg: "Please fill OTP field ",
-                          backgroundColor: AppColors.primary
+                          backgroundColor: AppColors.secondary
                         );
                       }
                     },
@@ -248,7 +248,7 @@ class _VerifyOtpScreenState extends State<VerifyOtpScreen> {
         String? otp = jsonresponse["otp"];
         String mobile = jsonresponse["mobile"];
         print('__________${otp}___sasdfsdfs______');
-        Fluttertoast.showToast(msg: '${jsonresponse['message']}');
+        Fluttertoast.showToast(msg: '${jsonresponse['message']}',backgroundColor:  AppColors.secondary);
         Navigator.pushReplacement(
             context,
             MaterialPageRoute(
@@ -258,7 +258,7 @@ class _VerifyOtpScreenState extends State<VerifyOtpScreen> {
 
       }
       else{
-        Fluttertoast.showToast(msg: "${jsonresponse['message']}");
+        Fluttertoast.showToast(msg: "${jsonresponse['message']}",backgroundColor:  AppColors.secondary);
         setState(() {
           isloader = false;
         });

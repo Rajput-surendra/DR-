@@ -52,9 +52,11 @@ class HomeController extends AppBaseController {
     // TODO: implement onInit
     getCurrentLocation();
     catId = Get.arguments ;
+
     getSliderData2();
     getSliderData1 ();
     HomeCategoryData();
+    getUserId();
     super.onInit();
   }
   // final GlobalKey<RefreshIndicatorState> _refreshIndicatorKey =
@@ -85,14 +87,18 @@ class HomeController extends AppBaseController {
   //
   // }
 
-
+  String? userId;
+    getUserId() async {
+      SharedPreferences preferences = await SharedPreferences.getInstance();
+      userId  = preferences.getString('user_id');
+      print('userIduserIduserId${userId}_________');
+    }
   void Apifunction(){
     HomeCategoryData();
     Future.delayed(const Duration(milliseconds: 500), () {
       getSliderData1();
     });
 
-    
   }
 
   bool isCatId = false;
@@ -223,7 +229,7 @@ void onTapSignupScreen(){
                 ),
               ),
               SizedBox(height:5,),
-              Container(
+              userId == null ?   SizedBox.shrink():Container(
                 height: 50,
                 width:320,
                 decoration: BoxDecoration(

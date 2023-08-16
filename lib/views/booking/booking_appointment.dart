@@ -55,11 +55,11 @@ class _BookingAppointmentState extends State<BookingAppointment> {
     http.StreamedResponse response = await request.send();
     if (response.statusCode == 200) {
       var  result = await response.stream.bytesToString();
-      var finalResult =  jsonDecode(result);
+      var finalResult = jsonDecode(result);
        //Get.toNamed(homeScreen);
       Navigator.pushReplacement(context, MaterialPageRoute(builder: (context)=>BookingDetails()));
       print('____result______${result}_________');
-      Fluttertoast.showToast(msg: "${finalResult['message']}");
+      Fluttertoast.showToast(msg: "${finalResult['message']}",backgroundColor:  AppColors.secondary);
       nameController.clear();
       ageController.clear();
       descriptionController.clear();
@@ -179,7 +179,7 @@ String _dateValue = '';
       }
     }
     if(finaldates.isEmpty){
-        Fluttertoast.showToast(msg: "No Date Available!!");
+        Fluttertoast.showToast(msg: "No Date Available!!",backgroundColor:  AppColors.secondary);
     }
     else {
       setState(() {
@@ -721,7 +721,7 @@ String _dateValue = '';
                         if(_formKey.currentState!.validate()){
                           getBookAppointmentApi();
                         }else{
-                          Fluttertoast.showToast(msg: "All Field are requerd");
+                          Fluttertoast.showToast(msg: "All Field are requerd",backgroundColor:  AppColors.secondary);
                         }
                       },
                       child: Container(

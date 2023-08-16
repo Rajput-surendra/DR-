@@ -90,7 +90,7 @@ class _BookingDetailsState extends State<BookingDetails> {
       getBookingDetails();
       var Response = await response.stream.bytesToString();
       final finalResponse = jsonDecode(Response);
-      Fluttertoast.showToast(msg: "${finalResponse['message']}");
+      Fluttertoast.showToast(msg: "${finalResponse['message']}",backgroundColor:  AppColors.secondary);
 
       // setState(() {
       //   bookingCencelModel = finalResponse;
@@ -100,12 +100,7 @@ class _BookingDetailsState extends State<BookingDetails> {
     else {
     print(response.reasonPhrase);
     }
-
-
   }
-
-
-
   @override
   Widget build(BuildContext context) {
     return RefreshIndicator(

@@ -66,7 +66,7 @@ class DoctorListController extends AppBaseController{
    if (response.statusCode == 200) {
      var  result =   await response.stream.bytesToString();
      var  finalResult = jsonDecode(result);
-     Fluttertoast.showToast(msg: "${finalResult['message']}");
+     Fluttertoast.showToast(msg: "${finalResult['message']}",backgroundColor:  AppColors.secondary);
 
    }
    else {
@@ -96,7 +96,7 @@ class DoctorListController extends AppBaseController{
     if (response.statusCode == 200) {
    var  result =   await response.stream.bytesToString();
    var  finalResult = jsonDecode(result);
-   Fluttertoast.showToast(msg: "${finalResult['message']}");
+   Fluttertoast.showToast(msg: "${finalResult['message']}",backgroundColor:  AppColors.secondary);
 
     }
     else {
@@ -166,12 +166,12 @@ class DoctorListController extends AppBaseController{
     try{
       Map<String, String> body = {};
       body[RequestKeys.isCatId] = catId.toString();
-     // body[RequestKeys.areaId] = signupController.placeID.toString();
+      body[RequestKeys.areaId] = signupController.placeID.toString();
       body[RequestKeys.cityId] = signupController.cityId.toString();
       body[RequestKeys.userId]= userId.toString() ;
-      print('_____User id is here___city__${signupController.cityId}_________');
-      print('_____Surenda+_jejedgishiugsidhuohhdryuig_____${signupController.placeID}_________');
-      print('_____Surenda+_jejedgishiugsidhuohhdryuig_____${catId}_________');
+      print('_____User id is here___city__${signupController.placeID}_________');
+      // print('_____Surenda+_jejedgishiugsidhuohhdryuig_____${signupController.placeID}_________');
+      // print('_____Surenda+_jejedgishiugsidhuohhdryuig_____${catId}_________');
       DoctorListResponseModel res  = await api.getDoctor(body) ;
       doctorListData = res.data??[];
       print('5555555555555${doctorListData[0].placeName}');
