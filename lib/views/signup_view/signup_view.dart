@@ -138,12 +138,9 @@ class _SignUpScreenState extends State<SignUpScreen> {
                                       icon:  Icon(Icons.keyboard_arrow_down_rounded,  color:AppColors.secondary,size: 30,),
                                       // elevation: 16,
                                       style:  const TextStyle(color: AppColors.secondary,fontWeight: FontWeight.bold),
-                                      underline: Padding(
-                                        padding: const EdgeInsets.only(left: 0,right: 0),
-                                        child: Container(
-                                          // height: 2,
-                                          color:  AppColors.whit,
-                                        ),
+                                      underline: Container(
+                                        // height: 2,
+                                        color:  AppColors.whit,
                                       ),
                                       onChanged: (String? value) {
                                         // This is called when the user selects an item.
@@ -167,15 +164,14 @@ class _SignUpScreenState extends State<SignUpScreen> {
                                         return DropdownMenuItem(
                                           value: items.name.toString(),
                                           child:  Column(
-                                            crossAxisAlignment: CrossAxisAlignment.start,
-                                            mainAxisAlignment: MainAxisAlignment.center,
+                                            // crossAxisAlignment: CrossAxisAlignment.start,
+                                            // mainAxisAlignment: MainAxisAlignment.center,
                                             children: [
-                                              Padding(
-                                                padding: const EdgeInsets.only(top: 5),
-                                                child: Container(
-                                                    width: 130,
-                                                    child: Text(items.name.toString(),overflow:TextOverflow.ellipsis,style: const TextStyle(color:AppColors.secondary,fontWeight: FontWeight.w600),)),
-                                              ),
+                                              SizedBox(height:15,),
+                                              Container(
+                                                  width: 130,
+                                                  child: Text(items.name.toString(),overflow:TextOverflow.ellipsis,style: const TextStyle(color:AppColors.secondary,fontWeight: FontWeight.w600),)),
+                                              const SizedBox(height:1,),
                                               const Divider(
                                                 thickness: 0.2,
                                                 color: AppColors.primary,
@@ -267,7 +263,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                                             mainAxisAlignment: MainAxisAlignment.center,
                                             children: [
                                               Padding(
-                                                padding: const EdgeInsets.only(top: 5),
+                                                padding: const EdgeInsets.only(top: 15),
                                                 child: Container(
                                                     width: 130,
                                                     child: Text(items.name.toString(),overflow:TextOverflow.ellipsis,style: const TextStyle(color:AppColors.secondary,fontWeight: FontWeight.w600),)),

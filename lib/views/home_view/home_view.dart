@@ -93,7 +93,10 @@ class _HomeScreenState extends State<HomeScreen> {
               InkWell(onTap: (){
                 Navigator.push(context, MaterialPageRoute(builder: (context)=>NotificationScreen()));
               },
-                  child: Icon(Icons.notifications_active,size: 30,))
+                  child: Padding(
+                    padding: const EdgeInsets.only(right: 5),
+                    child: Icon(Icons.notifications_active,size: 30,),
+                  ))
             ],
 
           ),

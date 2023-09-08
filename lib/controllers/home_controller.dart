@@ -117,6 +117,9 @@ class HomeController extends AppBaseController {
   void onTapWishListScreen(){
     Get.toNamed(wishScreen);
   }
+  void onTapPrivacyPolicy(){
+    Get.toNamed(privacyPolicyScreen);
+  }
   void onTapBookingScreen(){
     Get.toNamed(bookingScreen);
   }
@@ -229,7 +232,8 @@ void onTapSignupScreen(){
                 ),
               ),
               SizedBox(height:5,),
-              userId == null ?   SizedBox.shrink():Container(
+              userId == null  || userId == "" ?  SizedBox.shrink():
+              Container(
                 height: 50,
                 width:320,
                 decoration: BoxDecoration(
@@ -287,8 +291,76 @@ void onTapSignupScreen(){
                   },
                 ),
               ),
+
+
               SizedBox(height:5,),
               Container(
+                height: 50,
+                width:320,
+                decoration: BoxDecoration(
+                  color: selectedIndex == 2 ? Colors.blue : AppColors.whit,
+                ),
+                child: ListTile(
+                  leading:Container(
+                      height: 40,
+                      width: 40,
+                      decoration: BoxDecoration(
+                          color:selectedIndex ==0? AppColors.transparent:AppColors.whit,
+                          borderRadius: BorderRadius.circular(50)
+                      ),
+                      child:Image.asset('assets/Icons/privacy policy.png')),
+
+                  title:  Padding(
+                    padding: const EdgeInsets.only(left: 5.0),
+                    child: InkWell(
+                        onTap: (){
+                          Get.toNamed(privacyPolicyScreen);
+                        },
+                        child: Text('Privacy Policy',style: TextStyle(color:selectedIndex ==0?Colors.grey:AppColors.black ),)),
+                  ),
+                  onTap: () {
+                    //Get.toNamed(termsConditionScreen);
+                    selectedIndex == 2;
+                    update();
+                  },
+                ),
+              ),
+
+
+              SizedBox(height:5,),
+              Container(
+                height: 50,
+                width:320,
+                decoration: BoxDecoration(
+                  color: selectedIndex == 2 ? Colors.blue : AppColors.whit,
+                ),
+                child: ListTile(
+                  leading:Container(
+                      height: 40,
+                      width: 40,
+                      decoration: BoxDecoration(
+                          color:selectedIndex ==0? AppColors.transparent:AppColors.whit,
+                          borderRadius: BorderRadius.circular(50)
+                      ),
+                      child:Image.asset('assets/Icons/terms & condition.png')),
+
+                  title:  Padding(
+                    padding: const EdgeInsets.only(left: 5.0),
+                    child: InkWell(
+                        onTap: (){
+                          Get.toNamed(termsConditionScreen);
+                        },
+                        child: Text('Terms & Condition',style: TextStyle(color:selectedIndex ==0?Colors.grey:AppColors.black ),)),
+                  ),
+                  onTap: () {
+                    //Get.toNamed(termsConditionScreen);
+                    selectedIndex == 2;
+                    update();
+                  },
+                ),
+              ),
+              SizedBox(height:5,),
+              userId == null || userId == " "? SizedBox():Container(
                 height: 50,
                 width:320,
                 decoration: BoxDecoration(
@@ -317,7 +389,7 @@ void onTapSignupScreen(){
                     update();
                   },
                 ),
-              ),
+              )
               // SizedBox(height:5,),
               // Container(
               //   height: 50,

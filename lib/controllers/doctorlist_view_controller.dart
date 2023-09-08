@@ -166,10 +166,10 @@ class DoctorListController extends AppBaseController{
     try{
       Map<String, String> body = {};
       body[RequestKeys.isCatId] = catId.toString();
-      body[RequestKeys.areaId] = signupController.placeID.toString();
+      //body[RequestKeys.areaId] = signupController.placeID.toString();
       body[RequestKeys.cityId] = signupController.cityId.toString();
       body[RequestKeys.userId]= userId.toString() ;
-      print('_____User id is here___city__${signupController.placeID}_________');
+      print('surendraaaaaaaaaaaaaaaaa${userId}_________');
       // print('_____Surenda+_jejedgishiugsidhuohhdryuig_____${signupController.placeID}_________');
       // print('_____Surenda+_jejedgishiugsidhuohhdryuig_____${catId}_________');
       DoctorListResponseModel res  = await api.getDoctor(body) ;

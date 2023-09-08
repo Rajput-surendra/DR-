@@ -196,7 +196,7 @@ class _VerifyOtpScreenState extends State<VerifyOtpScreen> {
                           color: AppColors.secondary,
                           borderRadius: BorderRadius.circular(10)
                       ),
-                      child: Center(child: Text("Send OTP",style: TextStyle(color: AppColors.whit,fontSize: 16),)),
+                      child: Center(child: Text("Submit OTP",style: TextStyle(color: AppColors.whit,fontSize: 16),)),
                     ),
                   )
                   // Btn(

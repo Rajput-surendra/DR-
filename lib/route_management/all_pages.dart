@@ -11,6 +11,8 @@ import 'package:dr_plus/views/terms&condition/terms&condition_view.dart';
 import 'package:dr_plus/views/wishList/wishList_Screen.dart';
 import 'package:get/get.dart';
 
+import '../Static/privacy_Policy.dart';
+import '../Static/terms_condition.dart';
 import '../views/Awreness/Awreness.dart';
 import '../views/rate_us/rate_us_view.dart';
 import '../views/search_view/search_view.dart';
@@ -65,6 +67,7 @@ class AllPages {
       GetPage(
           name: wishScreen,
           page: () => WishListScreen()),
+
       GetPage(
           name: bookingScreen,
           page: () => BookingDetails()),

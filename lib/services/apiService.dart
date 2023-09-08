@@ -4,5 +4,6 @@ class ApiService {
 
 
   static const String doctorAwareness = baseUrl+'get_faq_awareness';
+  static const String getSettings = baseUrl+'get_settings';
 
 }
