@@ -67,8 +67,7 @@ class _DoctorListScreenState extends State<DoctorListScreen> {
             actions: const [],
           ),
           body:
-          controller.doctorListData == null ? Center(child: CircularProgressIndicator()):
-          controller.doctorListData.isEmpty ? Center(child: Text("No Doctor List Found!!!")):
+
           SingleChildScrollView(
             child:
             Column(
@@ -83,7 +82,41 @@ class _DoctorListScreenState extends State<DoctorListScreen> {
                       : Stack(
                           alignment: Alignment.bottomCenter,
                           children: [
-                            controller.homeController.getBannerResponseModel?.data==null||controller.homeController.getBannerResponseModel?.data=="" ? Center(child: CircularProgressIndicator()) :CarouselSlider(
+                           controller.homeController.getBannerResponseModel?.data==null||
+                               controller.homeController.getBannerResponseModel?.data=="" ?
+                           Center(child: CircularProgressIndicator()) :
+                           controller.homeController.getBannerResponseModel?.data!.length == 0 ?
+                           CarouselSlider(
+                             options: CarouselOptions(
+                                 onPageChanged: (index, result) {
+                                   controller.currentPost = index;
+                                   controller.update();
+                                 },
+                                 viewportFraction: 1.0,
+                                 initialPage: 0,
+                                 enableInfiniteScroll: true,
+                                 reverse: false,
+                                 autoPlay: true,
+                                 autoPlayInterval: Duration(seconds: 5),
+                                 autoPlayAnimationDuration:
+                                 Duration(milliseconds: 500),
+                                 enlargeCenterPage: false,
+                                 scrollDirection: Axis.horizontal,
+                                 height: 200.0),
+                             items: [1,2,3,4,5].map((i) {
+                               return Builder(
+                                 builder: (BuildContext context) {
+                                   return Image.asset("assets/images/dr_plus_logo.png");
+
+
+                                 },
+                               );
+                             }).toList(),
+
+                           )
+
+                           :
+                            CarouselSlider(
                               options: CarouselOptions(
                                   onPageChanged: (index, result) {
                                     controller.currentPost = index;
@@ -99,13 +132,15 @@ class _DoctorListScreenState extends State<DoctorListScreen> {
                                       Duration(milliseconds: 500),
                                   enlargeCenterPage: false,
                                   scrollDirection: Axis.horizontal,
-                                  height: 180.0),
+                                  height: 200.0),
                               items: controller.homeController.getBannerResponseModel?.data?.map((val) {
+                                print('_____ssssssssssss_____${val.image}_________');
                                 return Builder(
                                   builder: (BuildContext context) {
-                                    return CommonSlider(
+                                    return  CommonSlider(
                                         file: "${val.image}" ?? '',
                                         link: "${val.link}" ?? '');
+
                                     //   InkWell(
                                     //   onTap: () {
                                     //    // U can call function for redirect on google.
@@ -133,8 +168,10 @@ class _DoctorListScreenState extends State<DoctorListScreen> {
                            const SizedBox(
                     height: 10,
                   ),
-                           ListView.builder(
-                              itemCount: controller.doctorListData == null || controller.doctorListData.length == 0 ?  0 :controller.doctorListData.length,
+
+                  controller.doctorListData == '' ? Center(child: Text("please Wait")):
+                  controller.doctorListData.length == 0 ? Center(child: Text("No Doctor List Found!!!")):  ListView.builder(
+                              itemCount: /*controller.doctorListData == null || controller.doctorListData.length == 0 ?  0 :*/controller.doctorListData.length,
                               physics: NeverScrollableScrollPhysics(),
                               shrinkWrap: true,
                               itemBuilder: (context, index) {

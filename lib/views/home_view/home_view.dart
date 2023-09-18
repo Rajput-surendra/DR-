@@ -1,5 +1,7 @@
 
 
+import 'dart:convert';
+
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:dr_plus/Utils/colors.dart';
 import 'package:dr_plus/controllers/home_controller.dart';
@@ -9,6 +11,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:http/http.dart'as http;
 
+import '../../models/Slider_model.dart';
 import '../Notification/notification_Screen.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -102,7 +105,7 @@ class _HomeScreenState extends State<HomeScreen> {
           ),
           drawer: controller.getDrawer(),
           //drawer: controller.scaffoldKey.currentState!.openDrawer(),
-          body: controller.isBusy ? const Center(child: CircularProgressIndicator(color: AppColors.secondary,),) : SingleChildScrollView(
+          body:sliderModel ==  null ?Center(child: CircularProgressIndicator()): controller.isBusy ? const Center(child: CircularProgressIndicator(color: AppColors.secondary,),) : SingleChildScrollView(
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
@@ -148,7 +151,7 @@ class _HomeScreenState extends State<HomeScreen> {
                               scrollDirection: Axis.horizontal,
                               height: 180.0),
 
-                          items:controller.getBannerResponseModel1?.data?.map((val) {
+                          items:sliderModel?.data?.map((val) {
                             print('_____controller.sliderList__ddddddddddddddddddddddddd___${controller.getBannerResponseModel1?.data?.length}_________');
                             return Builder(
                               builder: (BuildContext context) {
@@ -224,6 +227,28 @@ class _HomeScreenState extends State<HomeScreen> {
       );
     },);
   }
+  int currentPost1 =  0;
+  buildDots1() {
+    List<Widget> dots = [];
+    for (int i = 0; i < (sliderModel?.data?.length ?? 10); i++) {
+      dots.add(
+        Container(
+          margin: EdgeInsets.all(1.5),
+          width: 6,
+          height: 6,
+          decoration: BoxDecoration(
+            shape: BoxShape.circle,
+            color: currentPost1 == i
+                ? AppColors.secondary
+                : Colors.grey.withOpacity(0.5),
+          ),
+        ),
+      );
+      // update();
+
+    }
+    return dots;
+  }
 
   // getCatApi(){
   //   var headers = {
@@ -248,6 +273,36 @@ class _HomeScreenState extends State<HomeScreen> {
   //   }
   //
   // }
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    getSliderApi();
+  }
+  SliderModel? sliderModel;
+getSliderApi() async {
+  var headers = {
+    'Cookie': 'ci_session=71a0342822031edd42e19b3ef0b0ffa877251dc5'
+  };
+  var request = http.MultipartRequest('GET', Uri.parse('https://developmentalphawizz.com/dr_booking/user/app/v1/api/get_banners'));
+
+  request.headers.addAll(headers);
+
+  http.StreamedResponse response = await request.send();
+
+  if (response.statusCode == 200) {
+     var result =  await response.stream.bytesToString();
+     var finalResult = SliderModel.fromJson(jsonDecode(result));
+     setState(() {
+       sliderModel =  finalResult;
+       print('_____surendra_____${finalResult}_________');
+     });
+  }
+  else {
+  print(response.reasonPhrase);
+  }
+
+}
 }
 
 

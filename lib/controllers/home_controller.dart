@@ -616,19 +616,18 @@ void Dialoguebox(){
 
   GetBannerResponseModel? getBannerResponseModel;
   Future<void> getSliderData1 () async {
+    //String type = '/doctor_plus_home';
     SharedPreferences preferences  = await  SharedPreferences.getInstance();
     bannerId =  preferences.getString("categoryId",);
     update();
-    print('_____Category Id_____${id}_________');
-    print('_____fffff_____${isCatId}_________');
     var headers = {
       'Cookie': 'ci_session=3579a5ee154970a00386cdcfa323d7b6b5a878f3'
     };
     var request = http.MultipartRequest('POST', Uri.parse('https://developmentalphawizz.com/dr_booking/user/app/v1/api/get_banners'));
     request.fields.addAll({
-     'category_id': isCatId==false ? "": "${id}"
+     'category_id': isCatId == false ? "": "${id}"
     });
-    print("aaaaaaaaaaaaaaaaaaaaaaaaaa${request.fields}");
+    print("-----------surendra---------${request.fields}");
 
     request.headers.addAll(headers);
     http.StreamedResponse response = await request.send();
@@ -654,8 +653,6 @@ void Dialoguebox(){
     SharedPreferences preferences  = await  SharedPreferences.getInstance();
     bannerId =  preferences.getString("categoryId",);
     update();
-    print('_____Category Id_____${id}_________');
-    print('_____fffff_____${isCatId}_________');
     var headers = {
       'Cookie': 'ci_session=3579a5ee154970a00386cdcfa323d7b6b5a878f3'
     };
