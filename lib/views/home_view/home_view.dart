@@ -129,7 +129,6 @@ class _HomeScreenState extends State<HomeScreen> {
                   ),
                 ),
                 const SizedBox(height: 15,),
-                // controller.isBusy ? const Center(child: CircularProgressIndicator(color: AppColors.secondary,),)  :
                     Stack(
                       alignment: Alignment.bottomCenter,
                       children: [
@@ -152,7 +151,6 @@ class _HomeScreenState extends State<HomeScreen> {
                               height: 180.0),
 
                           items:sliderModel?.data?.map((val) {
-                            print('_____controller.sliderList__ddddddddddddddddddddddddd___${controller.getBannerResponseModel1?.data?.length}_________');
                             return Builder(
                               builder: (BuildContext context) {
                                 return Container(
@@ -250,29 +248,7 @@ class _HomeScreenState extends State<HomeScreen> {
     return dots;
   }
 
-  // getCatApi(){
-  //   var headers = {
-  //     'Cookie': 'ci_session=f103a4bfa5ff5540ff7b91b298c8be18b4386964'
-  //   };
-  //   var request = http.MultipartRequest('POST', Uri.parse('https://developmentalphawizz.com/dr_booking/user/app/v1/api/get_doctors'));
-  //   request.fields.addAll({
-  //     'category_id': '13',
-  //     'area_id': '1',
-  //     'user_id': '456'
-  //   });
-  //
-  //   request.headers.addAll(headers);
-  //
-  //   http.StreamedResponse response = await request.send();
-  //
-  //   if (response.statusCode == 200) {
-  //     print(await response.stream.bytesToString());
-  //   }
-  //   else {
-  //   print(response.reasonPhrase);
-  //   }
-  //
-  // }
+
   @override
   void initState() {
     // TODO: implement initState
@@ -295,7 +271,6 @@ getSliderApi() async {
      var finalResult = SliderModel.fromJson(jsonDecode(result));
      setState(() {
        sliderModel =  finalResult;
-       print('_____surendra_____${finalResult}_________');
      });
   }
   else {

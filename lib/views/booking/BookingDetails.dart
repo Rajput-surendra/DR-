@@ -37,14 +37,12 @@ class _BookingDetailsState extends State<BookingDetails> {
   }
 
   Future<Null> callApi() async {
-    //getBookingDetails();
-   // cancelBooking();
+
   }
   String? userId;
   getUserId() async {
     SharedPreferences preferences = await  SharedPreferences.getInstance();
     userId  = preferences.getString("user_id");
-    print('______wddsdsadsa____${userId}_________');
     getBookingDetails();
   }
   GetBookingDetailsModel? getBookingDetailsModel;
@@ -56,13 +54,11 @@ class _BookingDetailsState extends State<BookingDetails> {
     request.fields.addAll({
       'user_id': userId.toString()
     });
-   print('_____request.fields_____${request.fields}_________');
     request.headers.addAll(headers);
     http.StreamedResponse response = await request.send();
     if (response.statusCode == 200) {
     var result =  await response.stream.bytesToString();
      var finalResult =  GetBookingDetailsModel.fromJson(jsonDecode(result));
-     print('_____vfdvvv_____${finalResult}_________');
      setState(() {
        getBookingDetailsModel = finalResult;
      });
@@ -92,10 +88,6 @@ class _BookingDetailsState extends State<BookingDetails> {
       final finalResponse = jsonDecode(Response);
       Fluttertoast.showToast(msg: "${finalResponse['message']}",backgroundColor:  AppColors.secondary);
 
-      // setState(() {
-      //   bookingCencelModel = finalResponse;
-      //   print('my booking message=====${bookingCencelModel?.message}');
-      // });
     }
     else {
     print(response.reasonPhrase);

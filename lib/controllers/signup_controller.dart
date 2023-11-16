@@ -153,7 +153,6 @@ class SignupController extends AppBaseController {
     getPlacedData.forEach((element) {
       if(selectedPlace == element.name) {
         placeID = element.id;
-        print('Placeidmmmmmmmmmm${placeID}');
       }
       
     });

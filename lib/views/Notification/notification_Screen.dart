@@ -27,7 +27,6 @@ class _NotificationScreenState extends State<NotificationScreen> {
   getNotificationApi() async {
     SharedPreferences preferences = await  SharedPreferences.getInstance();
     userId  = preferences.getString("user_id");
-    print('______wddsdsadsa____${userId}_________');
     var headers = {
       'Cookie': 'ci_session=68e80f182ab1169d6bb1fda9f2ffac18d518e3bf'
     };
@@ -36,7 +35,6 @@ class _NotificationScreenState extends State<NotificationScreen> {
       'user_id': userId.toString()
     });
 
-    print('____request.fields______${request.fields}_________');
     request.headers.addAll(headers);
     http.StreamedResponse response = await request.send();
     if (response.statusCode == 200) {
@@ -45,7 +43,6 @@ class _NotificationScreenState extends State<NotificationScreen> {
       setState(() {
         getNotificationModel = finalResult;
       });
-      print('finalResultfinalResult${finalResult}_________');
     }
     else {
       print(response.reasonPhrase);

@@ -35,14 +35,13 @@ class _LoginScreenState extends State<LoginScreen> {
     request.headers.addAll(headers);
     http.StreamedResponse response = await request.send();
     if (response.statusCode == 200) {
-      print("this is truuuuuuuuuuuuu");
       var finalresponse = await response.stream.bytesToString();
       final jsonresponse = json.decode(finalresponse);
 
       if (jsonresponse['error'] == false) {
         String? otp = jsonresponse["otp"];
         String mobile = jsonresponse["mobile"];
-        print('__________${otp}___sasdfsdfs______');
+
         Fluttertoast.showToast(msg: '${jsonresponse['message']}',backgroundColor:  AppColors.secondary);
         Navigator.pushReplacement(
             context,

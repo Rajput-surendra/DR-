@@ -88,11 +88,7 @@ class ApiClient extends GetConnect {
     log(response.body.toString());
     final data = jsonDecode(response.body);
     if (data['code'].toString() == '401') {
-      //token expired
-      /*Get.offAndToNamed(
-        'AppRoutes.login',
-        arguments: 'Session expired!!!\nPlease login again.',
-      );*/
+
       return '';
     } else {
       return response.body;

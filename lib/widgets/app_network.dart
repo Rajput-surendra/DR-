@@ -36,10 +36,7 @@ class AppNetworkImage extends StatelessWidget {
         Icons.error,
         color: Colors.red,
       ),
-      // imageBuilder: (context, image) => CircleAvatar(
-      //   backgroundImage: image,
-      //   radius: (height ?? width ?? 100) / 2,
-      // ),
+
       imageUrl: image ?? '',
     );
   }

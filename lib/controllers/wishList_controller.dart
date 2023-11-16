@@ -9,7 +9,6 @@ class wishListController extends AppBaseController{
 
   @override
   void onInit() {
-    //getWishListApi();
     // TODO: implement onInit
     super.onInit();
 
@@ -28,13 +27,11 @@ getWishListApi() async {
   request.fields.addAll({
     'user_id': userId.toString()
   });
-  print('____request.fields______${request.fields}_________');
   request.headers.addAll(headers);
   http.StreamedResponse response = await request.send();
   if (response.statusCode == 200) {
     var result =  await response.stream.bytesToString();
     var finalResult = GetWishListModel.fromJson(jsonDecode(result));
-    print('___csdfddgdgdgdgfdgfdg_______${finalResult}_________');
     getWishListModel =  finalResult;
     update();
   }

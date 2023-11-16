@@ -143,7 +143,6 @@ void onTapSignupScreen(){
         desiredAccuracy: LocationAccuracy.high,
       );
       currentPosition = position;
-      print('MY CURRENT POSITION____${currentPosition}');
       update();
     } catch (e) {
       print(e);
@@ -157,7 +156,6 @@ void onTapSignupScreen(){
     } else {
       final suggestions = categoryList.where((element) {
         final productTitle = element.name!.toLowerCase();
-        print('___element.name_______${element.name}_________');
         final input = value.toLowerCase();
         return productTitle.contains(input);
       }).toList();
@@ -390,34 +388,7 @@ void onTapSignupScreen(){
                   },
                 ),
               )
-              // SizedBox(height:5,),
-              // Container(
-              //   height: 50,
-              //   width:320,
-              //   decoration: BoxDecoration(
-              //     color: selectedIndex == 4 ? Colors.blue : AppColors.whit,
-              //   ),
-              //   child: ListTile(
-              //
-              //     leading:Container(
-              //         height: 40,
-              //         width: 40,
-              //         decoration: BoxDecoration(
-              //             color:selectedIndex ==0? AppColors.transparent:AppColors.whit,
-              //             borderRadius: BorderRadius.circular(50)
-              //         ),
-              //         child: Image.asset('assets/Icons/rate us.png')),
-              //     title:Padding(
-              //       padding: const EdgeInsets.only(left: 5.0),
-              //       child: Text('Logout',style: TextStyle(color:selectedIndex ==0?Colors.grey:AppColors.black )),
-              //     ),
-              //     onTap: () {
-              //       //Get.toNamed(rateUsScreen);
-              //       selectedIndex == 4;
-              //       update();
-              //     },
-              //   ),
-              // ),
+
             ],
           )
         ],
@@ -537,26 +508,7 @@ void Dialoguebox(){
   }
 
   int currentPost =  0;
-  //  buildDots() {
-  //    List<Widget>dots = [];
-  //   for (int i = 0; i < (homeController.sliderList.length?? 10) ; i++) {
-  //     dots.add(
-  //       Container(
-  //         margin:EdgeInsets.all(1.5),
-  //         width:30,
-  //         height: 4,
-  //         decoration: BoxDecoration(
-  //          // shape: BoxShape.circle,
-  //           color: currentPost == i
-  //               ? AppColors.black
-  //               : Colors.blue,
-  //             borderRadius: BorderRadius.circular(40)
-  //         ),
-  //       ) ,
-  //     );
-  //   }
-  //   return dots;
-  // }
+
   buildDots() {
     List<Widget> dots = [];
     for (int i = 0; i < (getBannerResponseModel?.data?.length ?? 10); i++) {
@@ -579,39 +531,9 @@ void Dialoguebox(){
     return dots;
   }
 
-  // List <getBannerData> sliderList = [] ;
 
   String? bannerId;
-  // Future<void> getSliderData () async{
-  //   SharedPreferences preferences  = await  SharedPreferences.getInstance();
-  //  bannerId =  preferences.getString("categoryId",);
-  //  print('_____ccsscsasasadsfsadsadsadsadsadsadsadsad_____${bannerId}_________');
-  //
-  //   isBusy = true ;
-  //   update();
-  //   try{
-  //     Map<String ,String> body = {};
-  //     body[RequestKeys.catId] = bannerId.toString();
-  //     GetBannerResponseModel res  = await api.SliderApi(body);
-  //
-  //     sliderList = res.data ?? [] ;
-  //     print('_____sliderimage_____${sliderList}_________');
-  //     update();
-  //     // if(!(res.status ??false)){
-  //     //   sliderList = res.data ?? [] ;
-  //     //   print('_____sliderId_____${sliderList.first.image}_________');
-  //     //   isBusy = false;
-  //     //   update();
-  //     // }else {
-  //     //   isBusy = false ;
-  //     //   update();
-  //     //   ShowMessage.showSnackBar('Error',"Something Went Wrong ") ;
-  //     // }
-  //   }catch(error) {
-  //     ShowMessage.showSnackBar('Error',"${error}") ;
-  //   }
-  //
-  // }
+
 
 
   GetBannerResponseModel? getBannerResponseModel;
@@ -627,7 +549,6 @@ void Dialoguebox(){
     request.fields.addAll({
      'category_id': isCatId == false ? "": "${id}"
     });
-    print("-----------surendra---------${request.fields}");
 
     request.headers.addAll(headers);
     http.StreamedResponse response = await request.send();
@@ -658,8 +579,6 @@ void Dialoguebox(){
     };
     var request = http.MultipartRequest('POST', Uri.parse('https://developmentalphawizz.com/dr_booking/user/app/v1/api/get_banners'));
 
-    print("aaaaaaaaaaaaaaaaaaaaaaaaaa${request.fields}");
-
     request.headers.addAll(headers);
     http.StreamedResponse response = await request.send();
 
@@ -678,26 +597,7 @@ void Dialoguebox(){
   }
 
   int currentPost1 =  0;
-  //  buildDots() {
-  //    List<Widget>dots = [];
-  //   for (int i = 0; i < (homeController.sliderList.length?? 10) ; i++) {
-  //     dots.add(
-  //       Container(
-  //         margin:EdgeInsets.all(1.5),
-  //         width:30,
-  //         height: 4,
-  //         decoration: BoxDecoration(
-  //          // shape: BoxShape.circle,
-  //           color: currentPost == i
-  //               ? AppColors.black
-  //               : Colors.blue,
-  //             borderRadius: BorderRadius.circular(40)
-  //         ),
-  //       ) ,
-  //     );
-  //   }
-  //   return dots;
-  // }
+
   buildDots1() {
     List<Widget> dots = [];
     for (int i = 0; i < (getBannerResponseModel1?.data?.length ?? 10); i++) {
@@ -714,7 +614,7 @@ void Dialoguebox(){
           ),
         ),
       );
-      // update();
+
 
     }
     return dots;

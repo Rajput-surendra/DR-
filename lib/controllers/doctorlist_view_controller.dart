@@ -36,7 +36,6 @@ class DoctorListController extends AppBaseController{
     // isCatIdAvailable = list[1];
     super.onInit();
     getShared();
-    print('RRRRRRRRRRRRRRR    ${Get.arguments}_________');
     gerUserId();
     doctorData();  }
 
@@ -78,9 +77,7 @@ class DoctorListController extends AppBaseController{
   addWishlistApi( int index) async {
     String doc_id = doctorListData[index].id.toString() ;
     update();
-    // SharedPreferences preferences = await SharedPreferences.getInstance();
-    // userId = preferences.getString('user_id');
-    print('____userId!@#______${userId}_________');
+
     var headers = {
       'Cookie': 'ci_session=8493ab1e62f4c7466bc379bc02c1c8b0d42ad42e'
     };
@@ -90,7 +87,6 @@ class DoctorListController extends AppBaseController{
       'dr_id': '${doc_id}'
     });
     update();
-    print('request.fields${request.fields}_________');
     request.headers.addAll(headers);
     http.StreamedResponse response = await request.send();
     if (response.statusCode == 200) {
@@ -115,7 +111,6 @@ class DoctorListController extends AppBaseController{
   void onTapDoctorDetails(int index){
     //bannerData = homeController.getBannerResponseModel?.data?[index].image;
     docId = doctorListData[index].id.toString() ;
-    print('___scssasad_______${doctorListData[index].id}_________');
     Get.toNamed(doctorDetailsScreen, arguments: docId);
     Get.toNamed(doctorDetailsScreen);
   }
@@ -166,28 +161,16 @@ class DoctorListController extends AppBaseController{
     try{
       Map<String, String> body = {};
       body[RequestKeys.isCatId] = catId.toString();
-      //body[RequestKeys.areaId] = signupController.placeID.toString();
       body[RequestKeys.cityId] = signupController.cityId.toString();
       body[RequestKeys.userId]= userId.toString() ;
-      print('surendraaaaaaaaaaaaaaaaa${userId}_________');
-      // print('_____Surenda+_jejedgishiugsidhuohhdryuig_____${signupController.placeID}_________');
-      // print('_____Surenda+_jejedgishiugsidhuohhdryuig_____${catId}_________');
+
       DoctorListResponseModel res  = await api.getDoctor(body) ;
       doctorListData = res.data??[];
       print('5555555555555${doctorListData[0].placeName}');
       update();
       isBusy = false ;
-      // if(res.status == true){
-      //   print("______-Ajay${doctorListData.first.title}");
-      //
-      //
-      // }else {
-      //   isBusy = false;
-      //   update();
-      //   ShowMessage.showSnackBar('Error',"Something went wrong") ;
-      // }
+
     }catch(error) {
-      //ShowMessage.showSnackBar('Error',"${error}") ;
     }
   }
 }

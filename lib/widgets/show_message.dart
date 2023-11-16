@@ -6,10 +6,6 @@ class ShowMessage {
   static showSnackBar(String msgTitle, String msg, {Duration? duration}) {
     if (kDebugMode) {
 
-      // print('msgTitle----------------------$msgTitle');
-      //
-      // print('msg----------------------$msg');
-
     }
     if (!Get.isSnackbarOpen) {
       Get.snackbar(

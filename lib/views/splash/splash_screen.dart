@@ -17,12 +17,6 @@ class SplashScreen extends StatelessWidget {
       return Container(
         height: heightSize,
         width: widthSize,
-        // decoration: BoxDecoration(
-        //   gradient: LinearGradient(
-        //       begin: Alignment.topCenter,
-        //       end: Alignment.bottomCenter,
-        //       colors: [AppColors.primary,AppColors.secondary.withOpacity(1)],
-        //       stops: [0, 1]),
         color: AppColors.primary,
         child: Image.asset('assets/images/dr_plus_logo.png',scale:4.3,),
       );

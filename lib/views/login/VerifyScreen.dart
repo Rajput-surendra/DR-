@@ -51,7 +51,6 @@ class _VerifyOtpScreenState extends State<VerifyOtpScreen> {
       'mobile': widget.mobile.toString(),
       'otp': widget.otp.toString()
     });
-    print('______request.fields____${request.fields}_________');
     request.headers.addAll(headers);
     http.StreamedResponse response = await request.send();
     if (response.statusCode == 200) {
@@ -61,7 +60,6 @@ class _VerifyOtpScreenState extends State<VerifyOtpScreen> {
        userId =  verifyOtpModel?.data?[0].id ?? "";
        preferences.setString('user_id', userId!);
        Navigator.pushReplacement(context, MaterialPageRoute(builder: (context)=>BookingAppointment()));
-       print('____User_id is here______${userId}_________');
     }
     else {
     print(response.reasonPhrase);
@@ -127,10 +125,7 @@ class _VerifyOtpScreenState extends State<VerifyOtpScreen> {
                   const SizedBox(
                     height: 10,
                   ),
-                  // Text(
-                  //   "OTP-${widget.otp}",
-                  //   style: TextStyle(color:  AppColors.black,fontWeight:FontWeight.bold,fontSize: 16),
-                  // ),
+
 
                   SizedBox(height: 20,),
                   Center(
@@ -147,8 +142,7 @@ class _VerifyOtpScreenState extends State<VerifyOtpScreen> {
                                 length: 6,
                                 controller: pinController,
                                 defaultPinTheme: defaultPinTheme,
-                                // focusedPinTheme: ,
-                                // submittedPinTheme: submittedPinTheme,
+
                                 validator: (s) {
                                   return s == '${widget.otp}' ? null : 'Please enter correct OTP';
                                 },
@@ -199,23 +193,6 @@ class _VerifyOtpScreenState extends State<VerifyOtpScreen> {
                       child: Center(child: Text("Submit OTP",style: TextStyle(color: AppColors.whit,fontSize: 16),)),
                     ),
                   )
-                  // Btn(
-                  //   color: colors.secondary,
-                  //   height: 45,
-                  //   width: 300,
-                  //   title: 'Done',
-                  //   onPress: () {
-                  //     verifyOtp();
-                  //     if(pinController.text== widget.otp){
-                  //       // verifyOtp();
-                  //     }else{
-                  //
-                  //       Fluttertoast.showToast(msg: "Please enter valid otp!");
-                  //     }
-                  //     // Navigator.push(context,
-                  //     //     MaterialPageRoute(builder: (context) => HomeScreen()));
-                  //   },
-                  // ),
 
                 ],
               ),
@@ -240,14 +217,12 @@ class _VerifyOtpScreenState extends State<VerifyOtpScreen> {
     request.headers.addAll(headers);
     http.StreamedResponse response = await request.send();
     if (response.statusCode == 200) {
-      print("this is truuuuuuuuuuuuu");
       var finalresponse = await response.stream.bytesToString();
       final jsonresponse = json.decode(finalresponse);
 
       if (jsonresponse['error'] == false) {
         String? otp = jsonresponse["otp"];
         String mobile = jsonresponse["mobile"];
-        print('__________${otp}___sasdfsdfs______');
         Fluttertoast.showToast(msg: '${jsonresponse['message']}',backgroundColor:  AppColors.secondary);
         Navigator.pushReplacement(
             context,

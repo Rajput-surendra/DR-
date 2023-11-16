@@ -49,19 +49,6 @@ class _AwrenessScreenState extends State<AwrenessScreen> {
 
   }
 
-//   int _expandedIndex = 1;
-//   bool isOpen = true;
-//
-//   void _toggleExpansion(int index) {
-//     setState(() {
-//       if (_expandedIndex == index) {
-//         isOpen = true;
-//       } else if(_expandedIndex == index) {
-//         isOpen = true;
-//       }
-//     });
-//   }
-// var selectIndex;
 int? selected = 0;
   @override
   Widget build(BuildContext context) {
@@ -173,33 +160,5 @@ int? selected = 0;
   }
 
 }
-class MyExpansionTile extends StatelessWidget {
-  final List<bool> isExpandedList;
-  final Function(int) onToggleExpansion;
 
-  MyExpansionTile({required this.isExpandedList, required this.onToggleExpansion});
-
-  @override
-  Widget build(BuildContext context) {
-    return ListView.builder(
-      itemCount: isExpandedList.length,
-      itemBuilder: (context, index) {
-        return ExpansionTile(
-          title: Text('Tile $index'),
-          onExpansionChanged: (isExpanded) {
-            onToggleExpansion(index);
-          },
-          children: <Widget>[
-            ListTile(
-              leading: Icon(Icons.info),
-              title: Text('Info 1'),
-            ),
-
-          ],
-          initiallyExpanded: isExpandedList[index],
-        );
-      },
-    );
-  }
-}
 

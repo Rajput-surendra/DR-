@@ -34,7 +34,6 @@ class _BookingAppointmentState extends State<BookingAppointment> {
   getBookAppointmentApi() async {
     SharedPreferences preferences = await SharedPreferences.getInstance();
    userId =  preferences.getString("user_id");
-    print('______userId____${userId}_________');
     var headers = {
       'Cookie': 'ci_session=9ade101fa6896bd2e6f8453ff6e5202e940ecca7'
     };
@@ -49,7 +48,6 @@ class _BookingAppointmentState extends State<BookingAppointment> {
       'time_slot': "${_value}",
       'clinic': "${hospitalIndex}"
     });
-    print('____Surendra______${request.fields}_________');
 
     request.headers.addAll(headers);
     http.StreamedResponse response = await request.send();
@@ -151,27 +149,20 @@ String _dateValue = '';
               startDate.day + i)
       );
     }
-    print("item are here now ${item} and ${item}");
+
         List<String> dayss = item.toString().toLowerCase().split(",");
         print("list here ${dayss} and ${days}");
         List<String> finaldates = [];
         finaldates.clear();
         DateTime dates = DateTime.now();
 
-    print("checking days of currnt week ${DateFormat('dd-MM-yyyy').format(days[0])} sdfs ${DateFormat('EEE').format(days[0])}");
     for(var i=0;i<days.length;i++){
       // if(DateFormat('EEE').format(days[i]).contains(dayss))
-      print("bbbbtttttt ${DateFormat('EEE').format(days[i])}   nnnnnnnnnnn ${DateFormat('dd-MM-yyyy').format(days[i]).toString()}");
-      print('ooooooooooooo__________${dayss.contains(DateFormat('EEE').format(days[i]).toString().toLowerCase())}_________');
       if(dayss.contains(DateFormat('EEE').format(days[i]).toString().toLowerCase())){
-        print("final working sfs ${dates} and ${days[i]}");
-        print('__________${dates.isAfter(days[i])}_________');
         if(DateTime.parse(DateFormat('yyyy-MM-dd').format(dates)).isAfter(days[i])){
-          print("sfsfsfsfsfs ${DateFormat('yyyy-MM-dd').format(dates)}");
         }
         else {
           finaldates.add(DateFormat('dd-MM-yyyy').format((days[i])).toString());
-          print("ffffff ${DateFormat('dd-MM-yyyy').format((days[i])).toString()}");
         }
       }
       else{
@@ -186,7 +177,6 @@ String _dateValue = '';
         dateDialog(finaldates);
       });
     }
-    print("bbbbbbbbbbbbbbbb ${finaldates}");
 
     return days;
   }
@@ -195,44 +185,7 @@ String _dateValue = '';
     print("www${findFirstDateOfTheWeek(dates)}");
     print("sfsfsf ${findLastDateOfTheWeek(dates)}");
     getDaysInBeteween(findFirstDateOfTheWeek(dates),findLastDateOfTheWeek(dates));
-    // DateTime? picked = await showDatePicker(
-    //     context: context,
-    //     initialDate:  DateTime.now(),
-    //     firstDate: DateTime.now(),
-    //     lastDate: DateTime(2025),
-    //     //firstDate: DateTime.now().subtract(Duration(days: 1)),
-    //     // lastDate: new DateTime(2022),
-    //     builder: (BuildContext context, Widget? child) {
-    //       return Theme(
-    //         data: ThemeData.light().copyWith(
-    //             primaryColor: AppColors.primary,
-    //             accentColor: Colors.black,
-    //             colorScheme:  ColorScheme.light(primary:  AppColors.primary),
-    //             // ColorScheme.light(primary: const Color(0xFFEB6C67)),
-    //             buttonTheme:
-    //             ButtonThemeData(textTheme: ButtonTextTheme.accent)),
-    //         child: child!,
-    //       );
-    //     });
-    // if (picked != null)
-    //   setState(() {
-    //     String yourDate = picked.toString();
-    //     _dateValue = convertDateTimeDisplay(yourDate);
-    //     print(_dateValue);
-    //     dateFormate = DateFormat("yyyy/MM/dd").format(DateTime.parse(_dateValue ?? ""));
-    //     // print("mn mnmnmn ${widget.doctorListData.clinics[]}");
-    //     print("checking items here nowc ${item.day}");
-    //     List<String> days = item.day.split(",");
-    //     print("list here ${days}");
-    //     if(DateTime.parse(_dateValue.toString()).weekday == DateTime.sunday || DateTime.parse(_dateValue.toString()).weekday == DateTime.monday || DateTime.parse(_dateValue.toString()).weekday == DateTime.tuesday || DateTime.parse(_dateValue.toString()).weekday == DateTime.wednesday){
-    //       print("yes working");
-    //     }
-    //     else{
-    //       print("not working here");
-    //     }
-    //     dateController = TextEditingController(text: _dateValue);
-    //
-    //   });
+
   }
   TimeOfDay? selectedTime;
   selectTime(BuildContext context) async {
@@ -432,10 +385,7 @@ String _dateValue = '';
                                       width: 250  ,
                                       child: Text(items.clinicName.toString(),overflow:TextOverflow.ellipsis,style: const TextStyle(color:AppColors.black,fontWeight: FontWeight.normal),)),
                                 ),
-                                // const Divider(
-                                //   thickness: 0.2,
-                                //   color: AppColors.primary,
-                                // ),
+
 
                               ],
                             ),
@@ -535,84 +485,10 @@ String _dateValue = '';
                                   )
                                 ],
                               ),
-                              // ListView.builder(
-                              //     shrinkWrap: true,
-                              //     itemCount: widget.doctorDetailsData.clinic?.length,
-                              //     itemBuilder: (BuildContext context, int index) {
-                              //       item = widget.doctorDetailsData.clinic?[index];
-                              //       return
-                              //
-                              //     }),
+
                             ),
                             SizedBox(height: 10,),
-                            // Container(
-                            //   height: 45,
-                            //   decoration: BoxDecoration(
-                            //       color:AppColors.secondary2,
-                            //       borderRadius:BorderRadius.circular(3)),
-                            //   child: Padding(
-                            //     padding: const EdgeInsets.only(left:10.0,right: 10),
-                            //     child: Row(
-                            //         mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            //         children:  [
-                            //           Container(
-                            //               child: Container(
-                            //                   decoration: BoxDecoration(borderRadius: BorderRadius.circular(5),
-                            //                       color: isContain.contains('SUN') ? AppColors.primary : Colors.transparent),
-                            //                   height: 30,
-                            //                   width: 40,
-                            //                   child: Center(child: const Text('Sun',style: TextStyle(color: AppColors.whit,fontWeight: FontWeight.w500,fontSize: 13),)))),
-                            //           Container(
-                            //               child: Container(
-                            //                   decoration: BoxDecoration(borderRadius: BorderRadius.circular(5),
-                            //                       color: isContain.contains('MON') ? AppColors.primary : Colors.transparent),
-                            //                   height: 30,
-                            //                   width: 40,
-                            //                   child: Center(child: const Text('Mon',style: TextStyle(color: AppColors.whit,fontWeight: FontWeight.w500,fontSize: 13),)))),
-                            //           Container(
-                            //               child: Container(
-                            //                   decoration: BoxDecoration(borderRadius: BorderRadius.circular(5),
-                            //                       color: isContain.contains('TUE') ? AppColors.primary : Colors.transparent),
-                            //                   height: 30,
-                            //                   width: 40,
-                            //                   child: Center(child: const Text('Tue',style: TextStyle(color: AppColors.whit,fontWeight: FontWeight.w500,fontSize: 13),)))),
-                            //           Container(
-                            //               child: Container(
-                            //                   decoration: BoxDecoration(borderRadius: BorderRadius.circular(5),
-                            //                       color: isContain.contains('WED') ? AppColors.primary : Colors.transparent),
-                            //                   height: 30,
-                            //                   width: 40,
-                            //                   child: Center(child: const Text('Wed',style: TextStyle(color: AppColors.whit,fontWeight: FontWeight.w500,fontSize: 13),)))),
-                            //           Container(
-                            //               child: Container(
-                            //                   decoration: BoxDecoration(borderRadius: BorderRadius.circular(5),
-                            //                       color: isContain.contains('THU') ? AppColors.primary : Colors.transparent),
-                            //                   height: 30,
-                            //                   width: 40,
-                            //                   child: Center(child: const Text('Thur',style: TextStyle(color: AppColors.whit,fontWeight: FontWeight.w500,fontSize: 13),)))),
-                            //           Container(
-                            //               child: Container(
-                            //                   decoration: BoxDecoration(borderRadius: BorderRadius.circular(5),
-                            //                       color: isContain.contains('FRI') ? AppColors.primary : Colors.transparent),
-                            //                   height: 30,
-                            //                   width: 40,
-                            //                   child: Center(child: const Text('Fri',style: TextStyle(color: AppColors.whit,fontWeight: FontWeight.w500,fontSize: 13),)))),
-                            //           Container(
-                            //               child: Container(
-                            //                   decoration: BoxDecoration(borderRadius: BorderRadius.circular(5),
-                            //                       color: isContain.contains('SAT') ? AppColors.primary : Colors.transparent),
-                            //                   height: 30,
-                            //                   width: 40,
-                            //                   child: Center(child: const Text('Sat',style: TextStyle(color: AppColors.whit,fontWeight: FontWeight.w500,fontSize: 13),)))),
-                            //           // const Center(child: Text('Mon',style: TextStyle(color: AppColors.whit,fontWeight: FontWeight.w400,fontSize: 13),)),
-                            //           // const Center(child: Text('Tue',style: TextStyle(color: AppColors.whit,fontWeight: FontWeight.w500,fontSize: 13),)),
-                            //           // const Text('Wed',style: TextStyle(color: AppColors.whit,fontWeight: FontWeight.w400,fontSize: 13),),
-                            //           // const Text('Thur',style: TextStyle(color: AppColors.whit,fontWeight: FontWeight.w400,fontSize: 13),),
-                            //           // const Text('Fri',style: TextStyle(color: AppColors.whit,fontWeight: FontWeight.w400,fontSize: 13),),
-                            //           // const Text('Sat',style: TextStyle(color: AppColors.whit,fontWeight: FontWeight.w400,fontSize: 13),),
-                            //         ]),
-                            //   ),
-                            // ),
+
                             TextFormField(
                               readOnly: true,
                               onTap: (){
@@ -633,81 +509,6 @@ String _dateValue = '';
                               },
                             ),
                             SizedBox(height: 10,),
-                            //     Row(children: [
-                            //       InkWell(
-                            //         onTap: () {
-                            //           _selectTimeStart(context);
-                            //         },
-                            //         child: Container(
-                            //           // Customize the container as needed
-                            //           padding: EdgeInsets.all(10),
-                            //           decoration: BoxDecoration(
-                            //             border: Border.all(),
-                            //             borderRadius: BorderRadius.circular(10),
-                            //           ),
-                            //           child: Row(
-                            //             mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            //             children: <Widget>[
-                            //               Text(
-                            //                 _selectTimeEnd != null
-                            //                     ? '${selectedTime!.format(context)}'
-                            //                     : 'Morning Shift Time',
-                            //               ),
-                            //               Icon(Icons.arrow_drop_down),
-                            //             ],
-                            //           ),
-                            //         ),
-                            //       ),
-                            //       SizedBox(width: 20,),
-                            //      InkWell(
-                            //   onTap: () {
-                            //     _selectTimeEnd(context);
-                            //   },
-                            //   child: Container(
-                            //     // Customize the container as needed
-                            //     padding: EdgeInsets.all(10),
-                            //     decoration: BoxDecoration(
-                            //       border: Border.all(),
-                            //       borderRadius: BorderRadius.circular(10),
-                            //     ),
-                            //     child: Row(
-                            //       mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            //       children: <Widget>[
-                            //         // Text(
-                            //         //   _selectTimeEnd != null
-                            //         //       ? '${selectedTime1!.format(context)}'
-                            //         //       : 'Morning Shift Time',
-                            //         // ),
-                            //         Icon(Icons.arrow_drop_down),
-                            //       ],
-                            //     ),
-                            //   ),
-                            // ),
-                            //
-                            //       Container(
-                            //         width:175,
-                            //         child: TextFormField(
-                            //           readOnly: true,
-                            //           onTap: (){
-                            //             _selectTimeEnd(context);
-                            //           },
-                            //          // controller: dateController,
-                            //           decoration: InputDecoration(
-                            //               hintText:"Select Date",
-                            //               border:OutlineInputBorder(
-                            //                   borderRadius: BorderRadius.circular(10)
-                            //               )
-                            //           ),
-                            //           validator: (value) {
-                            //             if (value == null || value.isEmpty) {
-                            //               return 'Please enter description';
-                            //             }
-                            //             return null;
-                            //           },
-                            //         ),
-                            //       ),
-                            //     ],)
-
                           ]
                       ),
                     ],

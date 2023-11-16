@@ -22,15 +22,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
     final heightSize = MediaQuery.of(context).size.height;
     final widthSize = MediaQuery.of(context).size.width;
 
-    // int _counter = 0;
-    // List<VagasDisponivei> _vagasDisponiveis;
-    // String vaga_name;
-    // VagasDisponivei selectedValue;
-    // void _incrementCounter() {
-    //   setState(() {
-    //     _counter++;
-    //   });
-    // }
+
 
 
     return GetBuilder(
@@ -335,7 +327,6 @@ class _SignUpScreenState extends State<SignUpScreen> {
                                       onChanged: (String? value) {
                                         // This is called when the user selects an item.
                                         setState(() {
-                                          print('selected Name is=====${controller.selectedPlace}');
                                           controller.selectedPlace = value!;
                                           controller.placeIdLoop();
                                         });

@@ -134,22 +134,13 @@ class _DoctorListScreenState extends State<DoctorListScreen> {
                                   scrollDirection: Axis.horizontal,
                                   height: 200.0),
                               items: controller.homeController.getBannerResponseModel?.data?.map((val) {
-                                print('_____ssssssssssss_____${val.image}_________');
                                 return Builder(
                                   builder: (BuildContext context) {
                                     return  CommonSlider(
                                         file: "${val.image}" ?? '',
                                         link: "${val.link}" ?? '');
 
-                                    //   InkWell(
-                                    //   onTap: () {
-                                    //    // U can call function for redirect on google.
-                                    //   },
-                                    //   child: Container(
-                                    //       height: heightSize/4.6,
-                                    //       width: widthSize/1,
-                                    //       child:Image.network("${val.image}",fit: BoxFit.fill,)),
-                                    // );
+
                                   },
                                 );
                               }).toList(),
@@ -188,21 +179,6 @@ class _DoctorListScreenState extends State<DoctorListScreen> {
                                               BorderRadius.circular(10)),
                                       child: Column(
                                         children: [
-
-                                          // Row(
-                                          //   children: [
-                                          //     Container(
-                                          //         width: 73,
-                                          //         child: controller.doctorListData[index].image == null || controller.doctorListData[index].image == ""
-                                          //             ? Image.asset(
-                                          //             'assets/images/doctor4')
-                                          //             : ClipRRect(
-                                          //             borderRadius:
-                                          //             const BorderRadius.all(Radius.circular(10)),
-                                          //             child: Image.network(controller.doctorListData[index].image ??
-                                          //                 '',fit: BoxFit.fill,)))
-                                          //   ],
-                                          // )
                                           ListTile(
                                               leading: Container(
                                                   width: 73,
@@ -372,27 +348,7 @@ class _DoctorListScreenState extends State<DoctorListScreen> {
                                                         ],
                                                       ),
                                                       SizedBox(height: 10,),
-                                                      // controller.doctorListData[index].isSubcrction == true ? InkWell(
-                                                      //   onTap: (){
-                                                      //     print("this is ne wuser ID $userId");
-                                                      //     if(userId == null || userId == ''){
-                                                      //       Navigator.pushReplacement(context, MaterialPageRoute(builder: (context)=>LoginScreen()));
-                                                      //    }else{
-                                                      //       Navigator.push(context, MaterialPageRoute(builder: (context)=>BookingAppointment(doctorListData:controller.doctorListData[index],)));
-                                                      //
-                                                      //
-                                                      //     }
-                                                      //   },
-                                                      //   child: Container(
-                                                      //     height: 35,
-                                                      //     width: 150,
-                                                      //     decoration: BoxDecoration(color: AppColors.secondary,
-                                                      //       borderRadius: BorderRadius.circular(10)
-                                                      //     ),
-                                                      //
-                                                      //     child: Center(child:  Text("Booking",style: TextStyle(color:AppColors.whit),)),
-                                                      //   ),
-                                                      // ):SizedBox.shrink(),
+
                                                       SizedBox(height: 10,)
                                                     ],
                                                   ),

@@ -41,7 +41,7 @@ class _DoctorDetailsState extends State<DoctorDetails> {
   }
   @override
   Widget build(BuildContext context) {
-    // print('__________${controller.doctorDetailsData}_________');
+
     final heightSize = MediaQuery.of(context).size.height;
     final widthSize = MediaQuery.of(context).size.width;
     return GetBuilder(
@@ -75,30 +75,7 @@ class _DoctorDetailsState extends State<DoctorDetails> {
               ),
             ):SizedBox()
           ),
-            //
-            //     :SizedBox.shrink(),
-          // bottomSheet: Container(
-          //   child:      InkWell(
-          //     onTap: (){
-          //       print("this is ne wuser ID $userId");
-          //       if(userId == null || userId == ''){
-          //         Navigator.pushReplacement(context, MaterialPageRoute(builder: (context)=>LoginScreen()));
-          //       }else{
-          //         Navigator.push(context, MaterialPageRoute(builder: (context)=>BookingAppointment(doctorListData:controller.doctorDetailsData[index],)));
-          //       }
-          //     },
-          //     child: Container(
-          //       height: 35,
-          //       width: 150,
-          //       decoration: BoxDecoration(color: AppColors.secondary,
-          //           borderRadius: BorderRadius.circular(10)
-          //       ),
-          //
-          //       child: Center(child:  Text("Booking",style: TextStyle(color:AppColors.whit),)),
-          //     ),
-          //   ),
-          //
-          // ),
+
           appBar: AppBar(
             title: const Padding(
               padding: EdgeInsets.only(left: 62.0,right: 50),
@@ -163,15 +140,7 @@ class _DoctorDetailsState extends State<DoctorDetails> {
                                         crossAxisAlignment: CrossAxisAlignment.start,
                                         mainAxisSize: MainAxisSize.min,
                                         children: [
-                                          // Container(
-                                          //   height: 50,
-                                          //   child: ListView.builder(
-                                          //     scrollDirection: Axis.horizontal,
-                                          //       itemCount: dayList.length,
-                                          //       itemBuilder: (BuildContext context, int index) {
-                                          //         return ;
-                                          //       }),
-                                          // ),
+
                                           Text("${controller.doctorDetailsData.first.clinic![index].clinicName}"
                                             ,style: TextStyle(color: AppColors.black,fontWeight: FontWeight.bold),),
                                           SizedBox(height: 10,),
@@ -234,12 +203,7 @@ class _DoctorDetailsState extends State<DoctorDetails> {
                                                             height: 30,
                                                             width: 40,
                                                             child: Center(child: const Text('Sat',style: TextStyle(color: AppColors.whit,fontWeight: FontWeight.w500,fontSize: 13),)))),
-                                                    // const Center(child: Text('Mon',style: TextStyle(color: AppColors.whit,fontWeight: FontWeight.w400,fontSize: 13),)),
-                                                    // const Center(child: Text('Tue',style: TextStyle(color: AppColors.whit,fontWeight: FontWeight.w500,fontSize: 13),)),
-                                                    // const Text('Wed',style: TextStyle(color: AppColors.whit,fontWeight: FontWeight.w400,fontSize: 13),),
-                                                    // const Text('Thur',style: TextStyle(color: AppColors.whit,fontWeight: FontWeight.w400,fontSize: 13),),
-                                                    // const Text('Fri',style: TextStyle(color: AppColors.whit,fontWeight: FontWeight.w400,fontSize: 13),),
-                                                    // const Text('Sat',style: TextStyle(color: AppColors.whit,fontWeight: FontWeight.w400,fontSize: 13),),
+
                                                   ]),
                                             ),
                                           ),
@@ -328,7 +292,6 @@ class _DoctorDetailsState extends State<DoctorDetails> {
                                   children: [
                                     Text('${controller.doctorDetailsData[0].title}',style: TextStyle(fontSize:16,fontWeight: FontWeight.bold,color: AppColors.primary)),
                                     Text('${controller.doctorDetailsData[0].username}',style: TextStyle(fontSize:16,fontWeight: FontWeight.bold,color: AppColors.primary),),
-                                   // Image.asset('assets/images/shareImage.png',scale: 1.4,)
                                   ],
                                 ),
                                 const SizedBox(height: 5,),

@@ -18,16 +18,6 @@ class DoctorDetailsController extends AppBaseController{
     super.onInit();
   }
 
-  // List<Map<String,dynamic>> detailList =[
-  //   {'image':'assets/images/doctor4.png','name':'Dr.Karan Mehra','profession':'Consultant Dermatology','address':'MBBS, MD, FCR (London)','experience':'Year of exp : 12 Years'},
-  //   {'image':'assets/images/doctor5.png','name':'Dr.Karan Mehra','profession':'Consultant Dermatology','address':'MBBS, MD, FCR (London)','experience':'Year of exp : 12 Years'},
-  //   {'image':'assets/images/doctor6.png','name':'Dr.Karan Mehra','profession':'Consultant Dermatology','address':'MBBS, MD, FCR (London)','experience':'Year of exp : 12 Years'},
-  //
-  // ];
-
-
-
-
   List <DoctorDetailsData> doctorDetailsData = [] ;
   Future<void> DetailsData () async{
     isBusy = true ;
@@ -35,9 +25,6 @@ class DoctorDetailsController extends AppBaseController{
     try{
       Map<String, String> body = {};
       body[RequestKeys.docId] = docId.toString();
-      print('____doctorId______${body}_________');
-
-
       DoctorDetailsResponseModel res  = await api.getDoctorDetails(body) ;
       if(res.status??false){
         doctorDetailsData = res.data??[];

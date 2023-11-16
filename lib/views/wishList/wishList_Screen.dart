@@ -29,14 +29,12 @@ class _WishListScreenState extends State<WishListScreen> {
   getUserId() async {
     SharedPreferences  preferences = await  SharedPreferences.getInstance();
     userId =  preferences.getString("user_id");
-    print('____user_Id______${userId}_________');
   }
    String? userId;
   GetWishListModel ? getWishListModel;
   getWishListApi() async {
     SharedPreferences  preferences = await  SharedPreferences.getInstance();
        userId =  preferences.getString("user_id");
-    print('__________${userId}_________');
     var headers = {
       'Cookie': 'ci_session=84ac381b0bea62c88d297e89f972727ab7eba30e'
     };
@@ -44,13 +42,11 @@ class _WishListScreenState extends State<WishListScreen> {
     request.fields.addAll({
       'user_id': userId.toString()
     });
-    print('______request.fields____${request.fields}_________');
     request.headers.addAll(headers);
     http.StreamedResponse response = await request.send();
     if (response.statusCode == 200) {
      var result =  await response.stream.bytesToString();
      var finalResult = GetWishListModel.fromJson(jsonDecode(result));
-     print('____finalResult______${finalResult}_________');
      setState(() {
        getWishListModel = finalResult;
      });

@@ -6,8 +6,6 @@ import 'package:dr_plus/views/doctor_list_view/doctor_list_view.dart';
 import 'package:dr_plus/views/home_view/home_view.dart';
 import 'package:dr_plus/views/login/LoginScreen.dart';
 import 'package:dr_plus/views/login/VerifyScreen.dart';
-import 'package:dr_plus/views/privacy_policy/privacy_policy_view.dart';
-import 'package:dr_plus/views/terms&condition/terms&condition_view.dart';
 import 'package:dr_plus/views/wishList/wishList_Screen.dart';
 import 'package:get/get.dart';
 
